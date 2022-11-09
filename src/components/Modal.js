@@ -19,13 +19,30 @@ import {
     Textarea
 } from '@chakra-ui/react'
 
+import { addNotesAsync } from '../redux/NoteSlice'
+import { useDispatch } from 'react-redux'
 
 function AddModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = useRef(null)
     const finalRef = useRef(null)
 
-    const [value, setValue] = useState('1')
+    const dispatch = useDispatch()
+    const [value, setValue] = useState('red')
+    const [title, setTitle] = useState('')
+    const [content, setContent] = useState('')
+    const [color, setColor] = useState('red')
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(addNotesAsync({
+            title: title,
+            content: content,
+            color: color
+        }))
+        onClose()
+    }
 
     return (
         <>
@@ -43,12 +60,12 @@ function AddModal() {
                     <ModalBody>
                         <FormControl>
                             <FormLabel>Note Title</FormLabel>
-                            <Input ref={initialRef} placeholder='Title' />
+                            <Input ref={initialRef} placeholder='Title' onChange={(e) => setTitle(e.target.value)} />
                         </FormControl>
 
                         <FormControl mt={4}>
                             <FormLabel>Description</FormLabel>
-                            <Textarea placeholder='Description' />
+                            <Textarea placeholder='Description' onChange={(e) => setContent(e.target.value)} />
                         </FormControl>
 
                         <FormLabel mt={4} mb={4}>Color:
@@ -56,8 +73,8 @@ function AddModal() {
                                 { value }
                             </Badge>
                         </FormLabel>
-                        <RadioGroup onChange={setValue} value={value} size='lg'>
-                            <Stack spacing={5} direction='row'>
+                        <RadioGroup onChange={setValue} value={value} size='lg' >
+                            <Stack spacing={5} direction='row' onChange={(e) => setColor(e.target.value)}>
                                 <Radio bg={'pink'} colorScheme='pink' value='pink' />
                                 <Radio bg={'red'} colorScheme='red' value='red' />
                                 <Radio bg={'yellow'} colorScheme='yellow' value='yellow' />
@@ -68,7 +85,7 @@ function AddModal() {
 
                     </ModalBody>
                     <ModalFooter>
-                        <Button bg='#497174' color="white" mr={3}>
+                        <Button bg='#497174' color="white" mr={3} onClick={handleSubmit}>
                             Save
                         </Button>
                         <Button onClick={onClose}>Cancel</Button>
