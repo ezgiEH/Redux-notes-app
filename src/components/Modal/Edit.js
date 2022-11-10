@@ -24,7 +24,7 @@ function Edit(note) {
     const [value, setValue] = useState(note.note.color)
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [color, setColor] = useState('red')
+    const [color, setColor] = useState('')
      
 
     const handleSubmit = (e) => {
