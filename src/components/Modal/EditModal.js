@@ -34,6 +34,9 @@ function EditModal({note}) {
                     <ModalBody>
                         <Edit note={note} />
                     </ModalBody>
+                    <Button size='sm' bg="#D6E4E5" color="white" onClick={onClose}>
+                    Back
+                </Button>
                 </ModalContent>
             </Modal>
         </>

@@ -10,22 +10,22 @@ import {
     Textarea,
     ModalFooter,
     Button,
-    useDisclosure
 } from '@chakra-ui/react'
 import { addNotes } from '../../redux/Notes/NoteSlice'
 import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 
 function Form() {
-    const { onClose } = useDisclosure()
     const initialRef = useRef(null)
 
     const dispatch = useDispatch()
-    const [value, setValue] = useState('red')
+   
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [color, setColor] = useState('')
+    const [value, setValue] = useState('')
 
+    const [ done , setDone ] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -36,7 +36,7 @@ function Form() {
                 content: content,
                 color: color
             }))
-        onClose()
+        setDone(true)
     }
 
     return (
@@ -68,9 +68,9 @@ function Form() {
             </RadioGroup>
 
             <ModalFooter>
-                <Button bg='#497174' color="white" mr={3} onClick={handleSubmit}>
+                <Button disabled={done} bg={color} color="white" mr={3} onClick={handleSubmit}>
                     Save
-                </Button>
+                </Button> 
             </ModalFooter>
         </>
     )

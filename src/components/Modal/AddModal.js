@@ -16,7 +16,7 @@ function AddModal() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = useRef(null)
     const finalRef = useRef(null)
-
+    
 
     return (
         <>
@@ -34,6 +34,9 @@ function AddModal() {
                     <ModalBody>
                         <Form />
                     </ModalBody>
+                    <Button size='sm' bg="#D6E4E5" onClick={onClose}>
+                    Back
+                </Button>
                 </ModalContent>
             </Modal>
         </>
