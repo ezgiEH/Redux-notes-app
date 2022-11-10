@@ -10,7 +10,7 @@ function Notes() {
     <div>
         <SimpleGrid minChildWidth={160} spacing={8} p={8}>
             {notes.map(note => (
-                <Note note={note}/>
+                <Note note={note} key={note.id}/>
             ))}
         </SimpleGrid>
     </div>

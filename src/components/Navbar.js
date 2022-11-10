@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex, Box, Text, Spacer } from '@chakra-ui/react'
-import AddModal from './Modal'
+import AddModal from './Modal/AddModal'
 
 function Navbar() {
     return (

@@ -1,9 +1,17 @@
 import React from 'react'
 import { Box, Button, Divider, Heading, Text } from '@chakra-ui/react'
-import { CheckIcon, EditIcon } from '@chakra-ui/icons'
+import { CloseIcon } from '@chakra-ui/icons'
+import { useDispatch } from 'react-redux'
+import { deleteNotes } from '../redux/Notes/NoteSlice'
+import EditModal from './Modal/EditModal'
 
 function Note({ note }) {
-    
+    const dispatch = useDispatch()
+
+    const handleDelete = () => {
+        dispatch(deleteNotes(note.id))
+    }
+
     return (
         <Box >
             <Box display={'flex'} flexDir={'column'} justifyContent={'space-between'}
@@ -11,7 +19,9 @@ function Note({ note }) {
                 height='240px'
                 boxShadow={'2xl'}
                 p={2}
-                rounded={'md'}>
+                rounded={'md'}
+                maxWidth={'sm'}
+                >
                 <Box>
                 <Heading 
                     noOfLines={1}
@@ -27,8 +37,8 @@ function Note({ note }) {
                 </Text>
                 </Box>
                 <Box pt={4} display={'flex'} justifyContent={'space-around'}>
-                    <Button colorScheme='whiteAlpha' variant='ghost'><CheckIcon /></Button>
-                    <Button colorScheme='blackAlpha' variant='ghost'><EditIcon /></Button>
+                    <EditModal note={note} />
+                    <Button variant='ghost' onClick={handleDelete}><CloseIcon /></Button>
                 </Box>
             </Box>
         </Box>
