@@ -1,6 +1,8 @@
 import React from 'react'
 import { Flex, Box, Text, Spacer } from '@chakra-ui/react'
 import AddModal from './Modal/AddModal'
+import Search from './Search'
+
 
 function Navbar() {
     return (
@@ -9,7 +11,11 @@ function Navbar() {
                 <Box>
                     <Text>NOTES-APP</Text>
                 </Box>
-                    <Spacer />
+                <Spacer />
+                <Box>
+                   <Search />
+                </Box>
+                <Spacer />
                 <Box>
                     <AddModal />
                 </Box>

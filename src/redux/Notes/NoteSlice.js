@@ -53,8 +53,11 @@ export const noteSlice = createSlice({
                 }
             }
         },
-   
+        setSearch: (state, action) => {
+            state.searchTerm = action.payload
+        }
     } })
 
-export const { addNotes, deleteNotes, editNotes } = noteSlice.actions
+export const selectSearch = (state) => state.notes.search
+export const { addNotes, deleteNotes, editNotes, setSearch } = noteSlice.actions
 export default noteSlice.reducer
