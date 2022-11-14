@@ -14,6 +14,7 @@ Projede <b>React.js | Chakra-ui | Redux Toolkit </b> kullanılmıştır.
 </ul>
 
 <hr />
+
 ## Ekran Görüntüleri
 
 <img src="https://github.com/ezgiEH/notes-app/blob/master/notes-app.png" />
